@@ -16,9 +16,24 @@ const markupGallery = document.querySelector('.gallery');
 		</a>
 	</li>
 	`).join('');
-	markupGallery.insertAdjacentHTML('beforeend', markup)
-	
+	markupGallery.insertAdjacentHTML('beforeend', markup)	
 })()
+
+markupGallery.addEventListener('click', onClick);
+
+function onClick(evt) {
+	evt.preventDefault();
+
+	if (!evt.target.classList.contains('gallery__image')) {
+		return;
+	}
+
+	const { source } = evt.target.dataset;
+	console.log(source);
+
+
+	console.log(evt.target);
+}
 	
 console.log(galleryItems);
 
