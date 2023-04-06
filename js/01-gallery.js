@@ -16,8 +16,8 @@ const markupGallery = document.querySelector('.gallery');
 		</a>
 	</li>
 	`).join('');
-	markupGallery.insertAdjacentHTML('beforeend', markup)	
-})()
+	markupGallery.insertAdjacentHTML('beforeend', markup)
+})();
 
 markupGallery.addEventListener('click', onClick);
 
@@ -28,14 +28,22 @@ function onClick(evt) {
 		return;
 	}
 
-	const { source } = evt.target.dataset;
-	console.log(source);
+	const dataLink = evt.target.dataset.source;
 
+	const data = galleryItems.find(({ original }) => original === dataLink);
 
-	console.log(evt.target);
+	// console.log(data);
+
+	const instance = basicLightbox.create(`
+   <div>
+		<img
+			class="gallery__image"
+			src="${data.original}"
+			data-source="${data.original}"
+			alt="${data.description}"
+			/>
+	</div>
+`);
+
+	instance.show();
 }
-	
-console.log(galleryItems);
-
-
-
