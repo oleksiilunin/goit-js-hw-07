@@ -1,7 +1,7 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-console.log(galleryItems);
+// console.log(galleryItems);
 
 const markupGallery = document.querySelector('.gallery');
 
@@ -26,22 +26,4 @@ const optionsForCaption = {
 	captionDelay: 250,
 };
 
-let gallery = new SimpleLightbox('.gallery__link', optionsForCaption);
-
-console.log(optionsForCaption);
-
-markupGallery.addEventListener('click', onClick);
-
-function onClick(evt) {
-	evt.preventDefault();
-
-	if (!evt.target.classList.contains('gallery__image')) {
-		return;
-	};
-	
-	const imageLink = evt.target.closest('gallery__link');
-
-	if (imageLink) {
-		gallery.open(imageLink);
-	}
-}
+const gallery = new SimpleLightbox('.gallery__link', optionsForCaption);
