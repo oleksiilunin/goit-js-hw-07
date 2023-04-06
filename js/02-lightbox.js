@@ -20,3 +20,25 @@ const markupGallery = document.querySelector('.gallery');
 	`).join('');
 	markupGallery.insertAdjacentHTML('beforeend', markup)
 })();
+
+
+let gallery = new SimpleLightbox('.gallery__link');
+
+markupGallery.addEventListener('click', onClick)
+
+function onClick(evt) {
+	evt.preventDefault();
+
+	if (!evt.target.classList.contains('gallery__image')) {
+		return;
+	}
+	
+	const imageLink = evt.target.closest('gallery__link');
+
+	if (imageLink) {
+		gallery.open(imageLink);
+	}
+}
+
+
+
