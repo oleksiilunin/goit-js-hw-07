@@ -21,17 +21,23 @@ const markupGallery = document.querySelector('.gallery');
 	markupGallery.insertAdjacentHTML('beforeend', markup)
 })();
 
+const optionsForCaption = {
+	captionsData: 'alt',
+	captionDelay: 250,
+};
 
-let gallery = new SimpleLightbox('.gallery__link');
+let gallery = new SimpleLightbox('.gallery__link', optionsForCaption);
 
-markupGallery.addEventListener('click', onClick)
+console.log(optionsForCaption);
+
+markupGallery.addEventListener('click', onClick);
 
 function onClick(evt) {
 	evt.preventDefault();
 
 	if (!evt.target.classList.contains('gallery__image')) {
 		return;
-	}
+	};
 	
 	const imageLink = evt.target.closest('gallery__link');
 
@@ -39,6 +45,3 @@ function onClick(evt) {
 		gallery.open(imageLink);
 	}
 }
-
-
-
