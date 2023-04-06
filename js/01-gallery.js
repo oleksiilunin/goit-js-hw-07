@@ -32,7 +32,7 @@ function onClick(evt) {
 
 	const data = galleryItems.find(({ original }) => original === dataLink);
 
-	// console.log(data);
+	console.log(data);
 
 	const instance = basicLightbox.create(`
    <div>
@@ -46,4 +46,15 @@ function onClick(evt) {
 `);
 
 	instance.show();
+
+	document.addEventListener('keydown', onKeyEscapeClose);
+
+	function onKeyEscapeClose (evt) {
+	if (evt.code === 'Escape') {
+		instance.close()
+		document.removeEventListener('keydown', onKeyEscapeClose);
+		};
+	};
 }
+
+
